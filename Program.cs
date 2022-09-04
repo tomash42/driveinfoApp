@@ -46,11 +46,12 @@ namespace driveinfoApp
             {
                 Console.WriteLine("\n Disk {0}\n",item.Name);
 
-                //converter to gb
+                //calculation of percentages
                 free = item.AvailableFreeSpace;
                 allspace = item.TotalSize;
                 result = (free / allspace) * percent;
-                //end converter to gb
+                //end calculation of percentages
+
                 Console.WriteLine("You have a {0, 30} % of free disk",result);
                 for (int i = 0; i <= result; i++)
                 {
@@ -76,9 +77,11 @@ namespace driveinfoApp
             }
             foreach (var item in di)
             {
+                //converter to gb
                 res = item.TotalSize / kb;
                 res1 = res / kb;
                 res2 = res1 / kb;
+                //converter to gb
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Total size is : {0, 10} GB",res2);
                 Console.ResetColor();
