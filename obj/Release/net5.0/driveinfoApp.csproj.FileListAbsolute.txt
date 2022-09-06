@@ -1,0 +1,16 @@
+C:\Users\NT\source\repos\KlasaIODriveInfo\driveinfoApp\bin\Release\net5.0\driveinfoApp.exe
+C:\Users\NT\source\repos\KlasaIODriveInfo\driveinfoApp\bin\Release\net5.0\driveinfoApp.deps.json
+C:\Users\NT\source\repos\KlasaIODriveInfo\driveinfoApp\bin\Release\net5.0\driveinfoApp.runtimeconfig.json
+C:\Users\NT\source\repos\KlasaIODriveInfo\driveinfoApp\bin\Release\net5.0\driveinfoApp.runtimeconfig.dev.json
+C:\Users\NT\source\repos\KlasaIODriveInfo\driveinfoApp\bin\Release\net5.0\driveinfoApp.dll
+C:\Users\NT\source\repos\KlasaIODriveInfo\driveinfoApp\bin\Release\net5.0\ref\driveinfoApp.dll
+C:\Users\NT\source\repos\KlasaIODriveInfo\driveinfoApp\bin\Release\net5.0\driveinfoApp.pdb
+C:\Users\NT\source\repos\KlasaIODriveInfo\driveinfoApp\obj\Release\net5.0\driveinfoApp.csproj.AssemblyReference.cache
+C:\Users\NT\source\repos\KlasaIODriveInfo\driveinfoApp\obj\Release\net5.0\driveinfoApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\NT\source\repos\KlasaIODriveInfo\driveinfoApp\obj\Release\net5.0\driveinfoApp.AssemblyInfoInputs.cache
+C:\Users\NT\source\repos\KlasaIODriveInfo\driveinfoApp\obj\Release\net5.0\driveinfoApp.AssemblyInfo.cs
+C:\Users\NT\source\repos\KlasaIODriveInfo\driveinfoApp\obj\Release\net5.0\driveinfoApp.csproj.CoreCompileInputs.cache
+C:\Users\NT\source\repos\KlasaIODriveInfo\driveinfoApp\obj\Release\net5.0\driveinfoApp.dll
+C:\Users\NT\source\repos\KlasaIODriveInfo\driveinfoApp\obj\Release\net5.0\ref\driveinfoApp.dll
+C:\Users\NT\source\repos\KlasaIODriveInfo\driveinfoApp\obj\Release\net5.0\driveinfoApp.pdb
+C:\Users\NT\source\repos\KlasaIODriveInfo\driveinfoApp\obj\Release\net5.0\driveinfoApp.genruntimeconfig.cache

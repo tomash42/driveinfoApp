@@ -1,0 +1,5 @@
+C:\Users\NT\Desktop\typingApp\diskInfo\driveinfoApp.exe
+C:\Users\NT\Desktop\typingApp\diskInfo\driveinfoApp.dll
+C:\Users\NT\Desktop\typingApp\diskInfo\driveinfoApp.deps.json
+C:\Users\NT\Desktop\typingApp\diskInfo\driveinfoApp.runtimeconfig.json
+C:\Users\NT\Desktop\typingApp\diskInfo\driveinfoApp.pdb
