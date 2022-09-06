@@ -45,14 +45,20 @@ namespace driveinfoApp
             DriveInfo[] di = DriveInfo.GetDrives();
             foreach (var item in di)
             {
-                Console.WriteLine("\n Disk {0}\n", item.Name);
-
+                if (item.IsReady == true)
+                {
+                    Console.WriteLine("Disk {0, 3} is Ready",item.Name);
+                }
+                else
+                {
+                    Console.WriteLine("Disk {0, 3} is not ready :",item.Name);
+                    break;
+                }
                 //calculation of percentages
                 free = item.AvailableFreeSpace;
                 allspace = item.TotalSize;
                 result = (free / allspace) * percent;
                 //end calculation of percentages
-
                 Console.WriteLine("You have a {0, 30} % of free disk", result);
                 for (int i = 0; i <= result; i++)
                 {
