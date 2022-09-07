@@ -104,7 +104,7 @@ namespace driveinfoApp
         }
         private static void statsFileToDelete()
         {
-            int countDir, countFiles;
+            int countDir, countFiles, sum=0, sum1=0;
             string tmpPath;
             tmpPath = Path.GetTempPath();
 
@@ -154,6 +154,33 @@ namespace driveinfoApp
                 Console.WriteLine("is not available : {0}",e.Message);
                 Console.ResetColor();
             }
+            //get Time create Directory
+            //calculating the old age of a file
+            IEnumerable<string> ie1 = Directory.GetDirectories(tmpPath,"",SearchOption.AllDirectories);
+            foreach (var item in ie1)
+            {
+                DateTime getTimeD = Directory.GetCreationTime(item);
+               
+                if (DateTime.Now.Subtract(getTimeD).TotalDays <= 31)
+                {
+                    sum++;
+                }
+                else if (DateTime.Now.Subtract(getTimeD).TotalDays >= 32 & DateTime.Now.Subtract(getTimeD).TotalDays <= 182)
+                {
+                    sum1++;
+                }
+            }
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("Files not older than 31 days : ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(sum);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("Old files up to half a year  : ");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(sum1);
+            Console.ResetColor();
+
+            // end calculating the old age of a file
             for (int i = 0; i < Console.WindowWidth; i++)
             {
                 Console.Write("*");
