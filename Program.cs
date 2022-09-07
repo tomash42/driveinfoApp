@@ -130,21 +130,30 @@ namespace driveinfoApp
             Console.Write(tmpPath);
             Console.ResetColor();
             //End Displey the path
+            try
+            {
 
-            List<string> direcTmp = new List<string>(Directory.EnumerateDirectories(tmpPath,"",SearchOption.AllDirectories));
-            List<string> fIlesTmp = new List<string>(Directory.EnumerateFiles(tmpPath,"",SearchOption.AllDirectories));
-            countDir = direcTmp.Count;
-            countFiles = fIlesTmp.Count;
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("\n\n\nTotal Directory  :");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write(countDir);
-            Console.ResetColor();
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("\nTotal Files      :");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(countFiles);
-            Console.ResetColor();
+                List<string> direcTmp = new List<string>(Directory.EnumerateDirectories(tmpPath, "", SearchOption.AllDirectories));
+                List<string> fIlesTmp = new List<string>(Directory.EnumerateFiles(tmpPath, "", SearchOption.AllDirectories));
+                countDir = direcTmp.Count;
+                countFiles = fIlesTmp.Count;
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write("\n\n\nTotal Directory  :");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write(countDir);
+                Console.ResetColor();
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write("\nTotal Files      :");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(countFiles);
+                Console.ResetColor();
+            }
+            catch (DirectoryNotFoundException e)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("is not available : {0}",e.Message);
+                Console.ResetColor();
+            }
             for (int i = 0; i < Console.WindowWidth; i++)
             {
                 Console.Write("*");
