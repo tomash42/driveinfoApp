@@ -12,6 +12,7 @@ namespace driveinfoApp
             ConsoleKeyInfo cki;
             Console.WriteLine("1-Check your disk usage :");
             Console.WriteLine("2-Get more disk space c :");
+            Console.WriteLine("3-List directory and files :");
             Console.WriteLine("9-Info");
             var number = Convert.ToSByte(Console.ReadLine());
             do
@@ -24,6 +25,9 @@ namespace driveinfoApp
                         break;
                     case 2:
                         statsFileToDelete();
+                        break;
+                    case 3:
+                        listDirAndFile();
                         break;
                     case 9:
                         Console.WriteLine("tomash40@yandex.com");
@@ -186,5 +190,97 @@ namespace driveinfoApp
                 Console.Write("*");
             }
         }
-    }
+
+        private static void listDirAndFile()
+        {
+
+            DriveInfo[] drinfo = DriveInfo.GetDrives();
+            for (int i = 0; i < Console.WindowWidth; i++)
+            {
+                Console.Write("*");
+            }
+            Console.WriteLine("Choose one of the available drives.");
+            foreach (var item in drinfo)
+            {
+                
+                Console.Write("Your disk :");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("{0}", item.Name);
+                Console.ResetColor();
+            }
+            
+            for (int i = 0; i < Console.WindowWidth; i++)
+            {
+                Console.Write("*");
+            }
+            //Get data from user
+            Console.WriteLine("Enter drive letter (example c) :");
+            string diskName = Console.ReadLine();
+            Console.WriteLine("Enter path  (example media or leave blank) :");
+            string pathName = Console.ReadLine();
+            //END Get data from user
+            //Construction of path
+            string path = $@"{diskName}:\{pathName}";
+            string path2 = Directory.GetDirectoryRoot(path);
+            try
+            {
+                if (Directory.Exists(path))
+                {
+                    string[] list1 = Directory.GetFileSystemEntries(path, "", SearchOption.AllDirectories);
+                   
+                    for (int i = 0; i < list1.Length; i++)
+                    {
+                        DateTime dt = Directory.GetCreationTime(list1[i]);
+                        Console.WriteLine(list1[i]);
+                        Console.ForegroundColor = ConsoleColor.DarkCyan;
+                        Console.Write("Created :");
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        Console.WriteLine("{0} ", dt);
+                        Console.ResetColor(); ;
+
+                    }
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Path -> {0} <- not exist.\n This is your all list ",path);
+                    Console.ResetColor();
+
+                    foreach (var item in drinfo)
+                    {
+                        string[] list2 = Directory.GetDirectories(item.Name);
+                        for (int i = 0; i < list2.Length; i++)
+                        {
+                            
+                            DateTime dt = Directory.GetCreationTime(list2[i]);
+                            Console.WriteLine(list2[i]);
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+                            Console.Write("Created :");
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                            Console.WriteLine("{0} ", dt);
+                            Console.ResetColor(); ;
+                        }
+                    }
+                    
+                   
+                }
+            }
+            catch (UnauthorizedAccessException e)
+            {
+
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("ACCES DANIES SORRY :(");
+                Console.ResetColor();
+            }
+            catch (DirectoryNotFoundException e1)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("The path encapsulated in the " +
+                    "Directory object does not exist. {0}");
+                Console.ResetColor();
+            }
+            
+
+        }
+        }
 }
