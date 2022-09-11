@@ -13,6 +13,7 @@ namespace driveinfoApp
             Console.WriteLine("1-Check your disk usage :");
             Console.WriteLine("2-Get more disk space c :");
             Console.WriteLine("3-List directory and files :");
+            Console.WriteLine("4-BackUp files :");
             Console.WriteLine("9-Info");
             var number = Convert.ToSByte(Console.ReadLine());
             do
@@ -28,6 +29,9 @@ namespace driveinfoApp
                         break;
                     case 3:
                         listDirAndFile();
+                        break;
+                    case 4:
+                        backUp();
                         break;
                     case 9:
                         Console.WriteLine("tomash40@yandex.com");
@@ -282,5 +286,104 @@ namespace driveinfoApp
             
 
         }
+        private static void backUp()
+        {
+         
+
+            for (int i = 0; i < Console.WindowWidth; i++)
+            {
+                Console.Write("*");
+            }
+            DriveInfo[] getDr = DriveInfo.GetDrives();
+            try
+            {
+                foreach (var item in getDr)
+                {
+                    Console.Write("Your Available disk  :");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("{0} :", item.Name);
+                    Console.ResetColor();
+                }
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine("upss");
+            }
+
+
+            for (int i = 0; i < Console.WindowWidth; i++)
+            {
+                Console.Write("*");
+            }
+            //
+            //path to the directory from which the files will be copied
+            //
+            Console.WriteLine("Enter drive letter(example c) :");
+            string driveLetter = Console.ReadLine();
+            Console.WriteLine("In write the directory from which the files are to be copied : (dir\\dir\\)");
+            string filePath = Console.ReadLine();
+            //
+            //path created, displaying files
+            //
+            string drive = $@"{driveLetter}:\{filePath}";
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(drive);
+            Console.ResetColor();
+            string[] getFiles = Directory.GetFiles(drive,"*.*");
+            
+            
+            try
+            {
+                
+                Console.WriteLine("\nyou can copy these files\n");
+                foreach (var item in getFiles)
+                {
+                    Console.WriteLine(item);
+                   
+
+                }
+            }
+            catch (UnauthorizedAccessException e)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Upps Danied ;(");
+                Console.ResetColor();
+            }
+            for (int i = 0; i < Console.WindowWidth; i++)
+            {
+                Console.Write("*");
+            }
+            //
+            //creating a copy path
+            //
+            Console.WriteLine("Enter the disk on which the backup is to be made(example c) :");
+            string driveLetter2 = Console.ReadLine();
+            Console.WriteLine("Create a path to copy the files : (dir\\dir\\)");
+            string filePath2 = Console.ReadLine();
+            //
+            //creating new directories in which there will be a copy of the files
+            //
+            string driveBackup = $@"{driveLetter2}:\{filePath2}\";
+            if (!Directory.Exists(driveBackup))
+            {
+                Directory.CreateDirectory(driveBackup);
+        
+            }
+            //
+            //copy,and  new file name
+            //
+            for (int i = 0; i < getFiles.Length; i++)
+            {          
+                string nameFile = Path.GetFileName(getFiles[i]);
+                File.Copy(getFiles[i], $@"{driveLetter2}:\{filePath2}\{i}-backUp-{nameFile}");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Success {0}",getFiles[i]);
+                Console.ResetColor();
+
+            }
+            
+            
         }
+    }
 }
