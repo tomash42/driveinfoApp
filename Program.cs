@@ -331,17 +331,16 @@ namespace driveinfoApp
             Console.WriteLine(drive);
             Console.ResetColor();
             string[] getFiles = Directory.GetFiles(drive,"*.*");
-            
-            
+
+            double mb, kb;
             try
-            {
-                
+            { 
                 Console.WriteLine("\nyou can copy these files\n");
                 foreach (var item in getFiles)
                 {
-                    Console.WriteLine(item);
-                   
-
+                  FileInfo infoFiles = new FileInfo(item);
+                  mb = (infoFiles.Length / 1024) / 1024;
+                  Console.WriteLine("{0} : {1,10} MB", item, mb);
                 }
             }
             catch (UnauthorizedAccessException e)
